@@ -46,7 +46,7 @@ runThreadedServer :: (Transport t, Protocol i, Protocol o)
                   -> IO a
 runThreadedServer accepter hand proc_ port = do
     socket <- listenOn port
-    acceptLoop (accepter socket) (proc_ hand)
+    acceptLoop (accepter socket) (proc_ hand) `finally` sClose socket
 
 -- | A basic threaded binary protocol socket server.
 runBasicServer :: h
