@@ -26,14 +26,14 @@ import qualified Data.ByteString.Lazy as BS
 instance Arbitrary ByteString where
   arbitrary = BS.pack . filter (/= 0) <$> arbitrary
 
-instance (Ord k, Arbitrary k, Arbitrary v) => Arbitrary (Map k v) where
+{-instance (Ord k, Arbitrary k, Arbitrary v) => Arbitrary (Map k v) where
   arbitrary = Map.fromList <$> arbitrary
 
 instance (Ord k, Arbitrary k) => Arbitrary (Set.Set k) where
   arbitrary = Set.fromList <$> arbitrary
 
 instance (Arbitrary k) => Arbitrary (Vector.Vector k) where
-  arbitrary = Vector.fromList <$> arbitrary
+  arbitrary = Vector.fromList <$> arbitrary-}
 
 instance Arbitrary Text.Text where
   arbitrary = Text.pack . filter (/= '\0') <$> arbitrary
